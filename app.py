@@ -127,9 +127,10 @@ if prompt:
             st.session_state.messages.append({"role": "Assistant", "content": response})
             st.markdown(f'<div class="assistant-msg"><b>Assistant:</b> {response}</div>', unsafe_allow_html=True)
         except ValueError as ve:
-            error_msg = f"⚠️ Parsing Error: {ve}"
+            error_msg_real = f"⚠️ Parsing Error: {ve}"
+            error_msg = "🚨 Oops! Something went wrong. Please try again later."
             st.error(error_msg)
-            st.session_state.messages.append({"role": "Assistant", "content": error_msg})
+            st.session_state.messages.append({"role": "Assistant", "content": error_msg_real})
         except Exception as e:
             error_msg = "🚨 Oops! Something went wrong. Please try again later."
             st.error(error_msg)
